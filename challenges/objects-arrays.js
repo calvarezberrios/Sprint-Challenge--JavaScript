@@ -74,6 +74,7 @@ const graduates = [
   { id: 10, first_name: "Hube", university: "Universitat Rovira I Virgili Tarragona", email: "hlethbrig9@foxnews.com" },
 ];
 
+console.log("\n-----Universities Array-----\n");
 /* Request 1: Create a new array called universities that contains all the universities in the graduates array. This will be an array of strings.
 
 Once you have the new array created, sort the universities alphabetically and log the result. */
@@ -83,6 +84,8 @@ for (let key in graduates) {
 }
 console.log(universities);
 
+
+console.log("\n-----Contact Info Array-----\n");
 /* Request 2: Create a new array called contactInfo that contains both first name and email of each student. This will be an array of strings.
 
 The resulting contact information strings should have a space between the first name and the email, like this: 
@@ -95,6 +98,8 @@ for (let key in graduates) {
 }
 console.log(contactInfo);
 
+
+console.log("\n-----Universities with 'Uni' in the name Array-----\n");
 /* Request 3: Find out how many universities have the string "Uni" included in their name. Create a new array called unisWithUni that contains them all. This will be an array of objects. Log the result. */
 const unisWithUni = [];
 for(let key in graduates) {
@@ -106,6 +111,7 @@ console.log(unisWithUni);
 
 
 // ==== ADVANCED Array Methods ====
+console.log("\n-----Advanced Array Methods-----\n");
 
 // Given this zoo data from around the United States, follow the instructions below.  Use the specific array methods in the requests below to solve the problems.
 
@@ -122,37 +128,43 @@ const zooAnimals = [
   { animal_name: "Australian pelican", population: 5, scientific_name: "Pelecanus conspicillatus", state: "West Virginia" },
 ];
 
+console.log("\n-----.forEach()-----\n");
 /* Request 1: .forEach()
 
 The zoos want to display both the scientific name and the animal name in front of the habitats. Populate the displayNames array with only the animal_name and scientific_name of each animal. displayNames will be an array of strings, and each string should follow this pattern: "Name: Jackal, asiatic, Scientific: Canis aureus."
 
 */
 const displayNames = [];
+zooAnimals.forEach(animal => displayNames.push(`Name: ${animal.animal_name}, Scientific: ${animal.scientific_name}.`))
 console.log(displayNames);
 
+console.log("\n-----.map()-----\n");
 /* Request 2: .map()
 
 The zoos need a list of all their animal's names (animal_name only) converted to lower case. Using map, create a new array of strings named lowCaseAnimalNames, each string following this pattern: "jackal, asiatic". Log the resut.
 
 */
 
-const lowCaseAnimalNames = [];
+const lowCaseAnimalNames = zooAnimals.map(animal => animal.animal_name.toLowerCase());
 console.log(lowCaseAnimalNames);
 
+console.log("\n-----.filter()-----\n");
 /* Request 3: .filter() 
 
 The zoos are concerned about animals with a lower population count. Using filter, create a new array of objects called lowPopulationAnimals which contains only the animals with a population less than 5.
 
 */
-const lowPopulationAnimals = [];
+const lowPopulationAnimals = zooAnimals.filter(animal => animal.population < 5);
 console.log(lowPopulationAnimals);
 
+console.log("\n-----.reduce()-----\n");
 /* Request 4: .reduce() 
 
 The zoos need to know their total animal population across the United States. Find the total population from all the zoos using the .reduce() method. Remember the reduce method takes two arguments: a callback (which itself takes two args), and an initial value for the count.
 
 */
-const populationTotal = 0;
+const populationTotal = zooAnimals.reduce((total, animal) => total += animal.population, 0);
+
 console.log(populationTotal);
 
 
